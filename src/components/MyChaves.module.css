@@ -1,0 +1,72 @@
+.grid {
+  padding: 3rem;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-rows: repeat(auto-fit, min-content);
+}
+
+.card {
+  height: 20rem;
+  background-color: var(--primary-dark);
+  color: var(--primary-contrast-light);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  font-size: 3rem;
+  /* O flex ai ó, dentro dos cards*/
+  display: flex; 
+  flex-direction: column ;
+  align-items: center;
+}
+
+.container {
+  display: grid;
+
+  grid-template-areas:
+    "header1 header1 header1"
+    "left header2 right"
+    "left main right"
+    "left footer right"
+    "footer2 footer2 right";
+
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 10rem 5rem auto 10rem 10rem;
+
+}
+
+.header1 {
+  grid-area: header1;
+  background-color: green;
+}
+
+.header2 {
+  grid-area: header2;
+  background-color: deepskyblue;
+}
+
+.asideLeft {
+  grid-area: left;
+  background-color: deeppink;
+}
+
+.asideRight {
+  grid-area: right;
+  background-color: deeppink;
+  @media (max-width: 1200px){
+    display:none;
+  }
+}
+
+.footer {
+  grid-area: footer;
+  background-color: darkslateblue;
+}
+
+
+.footer2 {
+  grid-area: footer2;
+  background-color: rgb(170, 67, 67);
+
+}
+
