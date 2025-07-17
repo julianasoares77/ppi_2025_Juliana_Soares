@@ -1,16 +1,13 @@
 import styles from "./Header.module.css";
-import img from "../assets/imgs/pomodoro.png";
 
-export function Header() {
+export function Header({ cart }) {
   return (
     <div className={styles.container}>
-      <div className={styles.containerImg}>
-        <img
-          src={img}
-          alt="Foco, Força e Fé"
-        />
+      <h1>TJA Megastore</h1>
+      <div className={styles.cartInfo}>
+        {cart.length > 0 && <p>{cart.length} products</p>}
+        <p>Total: $ {cart.reduce((total, product) => total + product.price, 0).toFixed(2)}</p>
       </div>
-      <h1>Foco, Força, Fé</h1>
     </div>
   );
 }
