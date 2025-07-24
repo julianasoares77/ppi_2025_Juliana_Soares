@@ -1,7 +1,99 @@
 .cart {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    align-items: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.cart h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #004d99;
+}
+
+.cart p {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cart img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cart h3 {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  margin: 0;
+  color: #222;
+}
+
+.cart p {
+  margin: 0 1rem 0 0;
+  font-weight: 600;
+  color: #0073e6;
+  min-width: 70px;
+  text-align: right;
+}
+
+.cart div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cart button {
+  background-color: #0073e6;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.cart button:hover {
+  background-color: #005bb5;
+}
+
+.cart span {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
 }

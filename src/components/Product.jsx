@@ -1,4 +1,5 @@
 import styles from "./Product.module.css";
+import { useState } from "react"
 
 export function Product({ product, addToCart }) {
   return (

@@ -12,8 +12,8 @@ export function Header({ cart }) {
           <p>
             Total: ${" "}
             {cart
-              .reduce((total, product) => total + product.price, 0)
-              .toFixed(2)}
+  .reduce((total, item) => total + item.product.price * item.quantity, 0)
+  .toFixed(2)}
           </p>
         </div>
       </Link>
