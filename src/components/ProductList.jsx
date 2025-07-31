@@ -1,17 +1,31 @@
 import styles from "./ProductList.module.css";
 import { CircularProgress } from "@mui/material";
 import { Product } from "./Product";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../service/CartContext";
 
 export function ProductList() {
-  
+
   const { products, loading, error } = useContext(CartContext);
+
+
+  const [word, setWord] = useState("")
+  let handleInput = (e) => {
+    setWord(e.target.value)
+  }
+
 
   return (
     <div className={styles.container}>
+      {/* Barra de pesquisa */}
+      <input onChange={handleInput} className={styles.searchBar}></input>
+
       <div className={styles.productList}>
-        {products.map((product) => (
+      {products
+        .filter((product) =>
+          product.title.toLowerCase().includes(word.toLowerCase())
+        )
+        .map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </div>
