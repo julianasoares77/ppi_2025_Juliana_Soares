@@ -16,3 +16,6 @@ body {
   background-color: var(--primary-light);
   color: var(--primary-contrast-dark);
 }
+body > #root {
+  padding-top: 6rem; /* igual à altura do header */
+}
