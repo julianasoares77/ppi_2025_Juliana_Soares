@@ -1,0 +1,83 @@
+.gerenciarContainer {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.gerenciarContainer h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.gerenciarContainer form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gerenciarContainer form input {
+  flex: 1 1 200px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.gerenciarContainer form button {
+  padding: 0.75rem 1rem;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.gerenciarContainer form button:hover {
+  background-color: #005fd4;
+}
+
+.gerenciarContainer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gerenciarContainer li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.gerenciarContainer img {
+  border-radius: 6px;
+}
+
+.gerenciarContainer button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.gerenciarContainer button:nth-child(1) {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.gerenciarContainer button:nth-child(1):hover {
+  background-color: #e0a800;
+}
+
+.gerenciarContainer button:nth-child(2) {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.gerenciarContainer button:nth-child(2):hover {
+  background-color: #c82333;
+}

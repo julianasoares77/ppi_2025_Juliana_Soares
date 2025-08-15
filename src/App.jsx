@@ -5,9 +5,14 @@ import { Header } from "./components/Header";
 import { useState } from "react";
 import { Route, Routes } from "react-router";
 import { Cart } from "./components/Cart";
+import { Login } from "./components/Login";
+import { CadastroUsuario } from "./components/CadastroUsuario";
+import { GerenciarProdutos } from "./components/GerenciarProdutos";
 
 export default function App() {
   const [cart, setCart] = useState([]);
+  const [produtos, setProdutos] = useState([]);
+  const [usuario, setUsuario] = useState(null);
 
   function addToCart(productToAdd) {
     setCart((prevCart) => {
@@ -46,6 +51,26 @@ export default function App() {
     );
   }
 
+  function handleLogin(email, senha) {
+    setUsuario({ email, admin: true });
+  }
+
+  function handleRegister(dados) {
+    console.log("Cadastro:", dados);
+  }
+
+  function handleAddProduto(prod) {
+    setProdutos((prev) => [...prev, { ...prod, id: Date.now() }]);
+  }
+
+  function handleUpdateProduto(produto) {
+    setProdutos((prev) => prev.map((p) => (p.id === produto.id ? produto : p)));
+  }
+
+  function handleDeleteProduto(id) {
+    setProdutos((prev) => prev.filter((p) => p.id !== id));
+  }
+
   return (
     <>
       <Header cart={cart} />
@@ -59,6 +84,22 @@ export default function App() {
               decreaseItem={decreaseItem}
               increaseItem={increaseItem}
             />
+          }
+        />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route
+          path="/cadastro"
+          element={<CadastroUsuario onRegister={handleRegister} />}
+        />
+        <Route
+          path="/gerenciar"
+          element={
+              <GerenciarProdutos
+                produtos={produtos}
+                onAdd={handleAddProduto}
+                onUpdate={handleUpdateProduto}
+                onDelete={handleDeleteProduto}
+              />
           }
         />
       </Routes>
