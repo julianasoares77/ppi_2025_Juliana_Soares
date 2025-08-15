@@ -1,37 +1,32 @@
-import { useEffect, useState } from "react";
 import styles from "./ProductList.module.css";
 import { CircularProgress } from "@mui/material";
 import { Product } from "./Product";
+import { useContext, useState } from "react";
+import { CartContext } from "../service/CartContext";
 
-export function ProductList({ addToCart }) {
-  var category = "smartphones";
-  var limit = 10;
-  var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
+export function ProductList() {
 
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { products, loading, error } = useContext(CartContext);
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setProducts(data.products);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProducts();
-  }, []);
+
+  const [word, setWord] = useState("")
+  let handleInput = (e) => {
+    setWord(e.target.value)
+  }
+
 
   return (
     <div className={styles.container}>
+      {/* Barra de pesquisa */}
+      <input onChange={handleInput} className={styles.searchBar}></input>
+
       <div className={styles.productList}>
-        {products.map((product) => (
-          <Product key={product.id} product={product} addToCart={addToCart} />
+      {products
+        .filter((product) =>
+          product.title.toLowerCase().includes(word.toLowerCase())
+        )
+        .map((product) => (
+          <Product key={product.id} product={product} />
         ))}
       </div>
       {loading && (

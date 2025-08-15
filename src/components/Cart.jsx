@@ -1,26 +1,49 @@
 import styles from "./Cart.module.css";
+import { useContext } from "react";
+import { CartContext } from "../service/CartContext";
 
-export function Cart({ cart, decreaseItem, increaseItem }) {
+export function Cart() {
+  const { cart, updateQtyCart, clearCart } = useContext(CartContext);
+
   return (
     <div className={styles.cart}>
       <h2>Shopping Cart</h2>
+
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cart.map(({ product, quantity }) => (
-            <li key={product.id}>
-              <img src={product.thumbnail} alt={product.title} />
-              <h3>{product.title}</h3>
-              <p>${product.price.toFixed(2)}</p>
-              <div>
-                <button onClick={() => decreaseItem(product)}>-</button>
-                <span style={{ margin: "0 8px" }}>{quantity}</span>
-                <button onClick={() => increaseItem(product)}>+</button>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul>
+            {cart.map((product) => (
+              <li key={product.id} className={styles.cartItem}>
+                <img src={product.thumbnail} alt={product.title} />
+                <h3>{product.title}</h3>
+                <p>${product.price.toFixed(2)}</p>
+                <div className={styles.quantityControls}>
+                  <button
+                    onClick={() =>
+                      updateQtyCart(product.id, product.quantity - 1)
+                    }
+                  >
+                    -
+                  </button>
+                  <span>{product.quantity}</span>
+                  <button
+                    onClick={() =>
+                      updateQtyCart(product.id, product.quantity + 1)
+                    }
+                  >
+                    +
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <button className={styles.clearCart} onClick={clearCart}>
+            Clear Cart
+          </button>
+        </>
       )}
     </div>
   );

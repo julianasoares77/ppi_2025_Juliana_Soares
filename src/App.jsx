@@ -2,54 +2,17 @@ import "./styles/theme.css";
 import "./styles/global.css";
 import { ProductList } from "./components/ProductList";
 import { Header } from "./components/Header";
-import { useState } from "react";
 import { Route, Routes } from "react-router";
 import { Cart } from "./components/Cart";
 import { Login } from "./components/Login";
 import { CadastroUsuario } from "./components/CadastroUsuario";
 import { GerenciarProdutos } from "./components/GerenciarProdutos";
+import { useState } from "react";
+import { CartProvider } from "./service/CartContext";
 
 export default function App() {
-  const [cart, setCart] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [usuario, setUsuario] = useState(null);
-
-  function addToCart(productToAdd) {
-    setCart((prevCart) => {
-      const existingItemIndex = prevCart.findIndex(
-        (item) => item.product.id === productToAdd.id
-      );
-      if (existingItemIndex !== -1) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingItemIndex].quantity += 1;
-        return updatedCart;
-      } else {
-        return [...prevCart, { product: productToAdd, quantity: 1 }];
-      }
-    });
-  }
-
-  function increaseItem(product) {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.product.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      )
-    );
-  }
-
-  function decreaseItem(product) {
-    setCart((prevCart) =>
-      prevCart
-        .map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  }
 
   function handleLogin(email, senha) {
     setUsuario({ email, admin: true });
@@ -72,20 +35,11 @@ export default function App() {
   }
 
   return (
-    <>
-      <Header cart={cart} />
+    <CartProvider>
+      <Header />
       <Routes>
-        <Route path="/" element={<ProductList addToCart={addToCart} />} />
-        <Route
-          path="/cart"
-          element={
-            <Cart
-              cart={cart}
-              decreaseItem={decreaseItem}
-              increaseItem={increaseItem}
-            />
-          }
-        />
+        <Route path="/" element={<ProductList />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route
           path="/cadastro"
@@ -94,15 +48,15 @@ export default function App() {
         <Route
           path="/gerenciar"
           element={
-              <GerenciarProdutos
-                produtos={produtos}
-                onAdd={handleAddProduto}
-                onUpdate={handleUpdateProduto}
-                onDelete={handleDeleteProduto}
-              />
+            <GerenciarProdutos
+              produtos={produtos}
+              onAdd={handleAddProduto}
+              onUpdate={handleUpdateProduto}
+              onDelete={handleDeleteProduto}
+            />
           }
         />
       </Routes>
-    </>
+    </CartProvider>
   );
 }
