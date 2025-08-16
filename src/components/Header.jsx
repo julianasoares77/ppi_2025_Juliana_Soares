@@ -12,19 +12,6 @@ export function Header() {
       <Link to="/" className={styles.link}>
         <h1>TJA Megastore</h1>
       </Link>
-
-      <div className={styles.navLinks}>
-        <Link to="/login" className={styles.link}>
-          <h2>Login</h2>
-        </Link>
-        <Link to="/cadastro" className={styles.link}>
-          <h2>Cadastro</h2>
-        </Link>
-        <Link to="/gerenciar" className={styles.link}>
-          <h2>Gerenciar Produtos</h2>
-        </Link>
-      </div>
-
       <Link to="/cart" className={styles.link}>
         <div className={styles.cartInfo}>
           <ShoppingBasket size={32} />
@@ -36,6 +23,17 @@ export function Header() {
           </p>
         </div>
       </Link>
+      <div className={styles.navLinks}>
+        <Link to="/login" className={styles.link}>
+          <h2>Login</h2>
+        </Link>
+        <Link to="/cadastro" className={styles.link}>
+          <h2>Sign up</h2>
+        </Link>
+        <Link to="/gerenciar" className={styles.link}>
+          <h2>Manage products</h2>
+        </Link>
+      </div>
     </div>
   );
 }

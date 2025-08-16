@@ -49,7 +49,7 @@ export function GerenciarProdutos({ produtos, onAdd, onUpdate, onDelete }) {
         />
         <input
           name="thumbnail"
-          placeholder="URL da Imagem"
+          placeholder="Imagem"
           value={novoProduto.thumbnail}
           onChange={handleChange}
         />

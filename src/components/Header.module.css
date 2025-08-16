@@ -3,8 +3,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  height: 6rem; /* reduzir altura */
-  padding: 1rem 2rem; /* reduzir padding */
+  padding: 1rem 2rem;
   background-color: var(--primary-dark);
 
   position: fixed;
@@ -17,7 +16,7 @@
 }
 
 .container h1 {
-  font-size: 2rem; /* reduzir tamanho do título */
+  font-size: 2rem;
   font-weight: bolder;
 }
 
@@ -39,5 +38,8 @@
 .link {
   text-decoration: none;
   color: var(--primary);
+  background-color: var(--primary-light);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 

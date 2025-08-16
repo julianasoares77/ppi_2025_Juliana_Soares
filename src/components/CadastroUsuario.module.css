@@ -1,8 +1,8 @@
 .cadastroContainer {
   max-width: 400px;
-  margin: 3rem auto;
+  margin: 20rem auto;
   padding: 2rem;
-  background: #fff;
+  background-color: var(--primary);
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -21,18 +21,15 @@
 .cadastroContainer input {
   padding: 0.75rem;
   border: 1px solid #ccc;
+  background-color: var(--primary-light);
   border-radius: 8px;
 }
 
 .cadastroContainer button {
   padding: 0.75rem;
-  background-color: #28a745;
+  background-color: var(--primary-dark);
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-}
-
-.cadastroContainer button:hover {
-  background-color: #218838;
 }

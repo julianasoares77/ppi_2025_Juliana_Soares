@@ -18,7 +18,7 @@ export function ProductList() {
   return (
     <div className={styles.container}>
       {/* Barra de pesquisa */}
-      <input onChange={handleInput} className={styles.searchBar}></input>
+      <input onChange={handleInput} className={styles.searchBar} placeholder="Search products"></input>
 
       <div className={styles.productList}>
       {products
